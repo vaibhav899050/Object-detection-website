@@ -4,32 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Processing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding-top: 50px; /* Add some top padding for better appearance */
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+            margin: 0 auto; /* Center the image */
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px; /* Add some bottom margin for separation */
+        }
+        p {
+            font-size: 18px; /* Increase the font size of description */
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px; /* Add some top margin for separation */
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px; /* Add some bottom margin for separation */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .file-input {
+            position: relative;
+            overflow: hidden;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .file-input:hover {
+            background-color: #45a049;
+        }
+        .file-input input {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        /* Navigation bar styles */
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1>Image Processing</h1>
-    
-    <!-- Form for uploading images -->
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
-        <button type="submit">Upload</button>
-    </form>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Image Processing</h1>
+        
+        <!-- Form for uploading images -->
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <!-- Customized file input button -->
+            <label class="file-input">
+                Choose File
+                <input type="file" name="file" accept="image/*" required>
+            </label>
+            <div class="button-container">
+                <button type="submit">Upload</button>
+            </div>
+        </form>
 
-    <!-- Display last uploaded original image and description -->
-    <h2>Last Uploaded Original Image</h2>
-    {% if last_uploaded_image %}
-        <img src="{{ url_for('static', filename='uploads/' + last_uploaded_image) }}" alt="Original Image">
-        <p>Description: {{ description_original }}</p>
-    {% else %}
-        <p>No image uploaded yet.</p>
-    {% endif %}
+        <!-- Display last uploaded original image and description -->
+        <h2>Last Uploaded Original Image</h2>
+        {% if last_uploaded_image %}
+            <img src="{{ url_for('static', filename='uploads/' + last_uploaded_image) }}" alt="Original Image">
+            <p>Description: {{ description_original }}</p>
+        {% else %}
+            <p>No image uploaded yet.</p>
+        {% endif %}
 
-    <!-- Display last uploaded processed image and description -->
-    <h2>Last Uploaded Processed Image</h2>
-    {% if last_uploaded_image %}
-        <img src="{{ url_for('static', filename='processed/' + last_uploaded_image) }}" alt="Processed Image">
-        <p>Description: {{ description_processed }}</p>
-    {% else %}
-        <p>No image uploaded yet.</p>
-    {% endif %}
+        <!-- Display last uploaded processed image and description -->
+        <h2>Last Uploaded Processed Image</h2>
+        {% if last_uploaded_image %}
+            <img src="{{ url_for('static', filename='processed/' + last_uploaded_image) }}" alt="Processed Image">
+            <p>Description: {{ description_processed }}</p>
+        {% else %}
+            <p>No image uploaded yet.</p>
+        {% endif %}
+    </div>
 </body>
 </html>

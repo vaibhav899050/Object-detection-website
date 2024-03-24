@@ -1,0 +1,41 @@
+/* App.css */
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.upload-section {
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.upload-section h2 {
+  margin-bottom: 20px;
+}
+
+.upload-section input[type="file"] {
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+.upload-section button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.upload-section button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.upload-progress {
+  margin-top: 20px;
+}

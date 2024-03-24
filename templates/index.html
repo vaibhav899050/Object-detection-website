@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+</head>
+<body>
+    <h1>Image Processing</h1>
+    
+    <!-- Form for uploading images -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- Display last uploaded original image and description -->
+    <h2>Last Uploaded Original Image</h2>
+    {% if last_uploaded_image %}
+        <img src="{{ url_for('static', filename='uploads/' + last_uploaded_image) }}" alt="Original Image">
+        <p>Description: {{ description_original }}</p>
+    {% else %}
+        <p>No image uploaded yet.</p>
+    {% endif %}
+
+    <!-- Display last uploaded processed image and description -->
+    <h2>Last Uploaded Processed Image</h2>
+    {% if last_uploaded_image %}
+        <img src="{{ url_for('static', filename='processed/' + last_uploaded_image) }}" alt="Processed Image">
+        <p>Description: {{ description_processed }}</p>
+    {% else %}
+        <p>No image uploaded yet.</p>
+    {% endif %}
+</body>
+</html>
